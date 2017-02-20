@@ -6,7 +6,7 @@ public class Collatz {
 	public static Scanner s = new Scanner(System.in);
 	public static String input = s.nextLine(); // Takes the input on one line as two numbers separated by a space
 	public static String[] numbers = input.split(" "); // Takes the input string and separates it based on spaces and stores them to an Array
-	public int int1 = Integer.parseInt(numbers[0]);
+	public int int1 = Integer.parseInt(numbers[0]); //Sets the value of each of the seed integers from the starting input string
 	public int int2 = Integer.parseInt(numbers[1]);
 	public int count = 0;
 

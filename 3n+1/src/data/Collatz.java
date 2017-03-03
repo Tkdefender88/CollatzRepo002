@@ -6,8 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Collatz {
-	int int1, int2;
-	int count = 0;
+	int int1, int2, count;
 	
 	public void handleIO() throws FileNotFoundException {
 		File file = new File("input");
@@ -17,9 +16,11 @@ public class Collatz {
 			String[] numbers = input.split(" ");// Takes the input string and separates it based on spaces and stores them to an Array
 			int1 = Integer.parseInt(numbers[0]); //Sets the value of each of the seed integers from the starting input string
 			int2 = Integer.parseInt(numbers[1]);
+			count = 0;
 			countCollatz(int1, int2);
 			System.out.println(int1 + " " + int2 + " " + count);
 		}
+		s.close();
 	}
 	
 	public void countCollatz(int a, int b) {
@@ -68,6 +69,6 @@ public class Collatz {
 	public static void main(String[] args) throws FileNotFoundException {
 		Collatz c = new Collatz();
 		System.setIn(new FileInputStream(new File("input")));
-		c.handleIO();		
+		c.handleIO();
 	}
 }

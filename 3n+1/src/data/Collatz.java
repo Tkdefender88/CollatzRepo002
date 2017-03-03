@@ -6,25 +6,22 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Collatz {
+	int int1, int2;
+	int count = 0;
 	
-	
-	public int count = 0;
-	
-	public void handleIO() {
+	public void handleIO() throws FileNotFoundException {
 		File file = new File("input");
-		Scanner s;
-		try {
-			s = new Scanner(file);
+		Scanner s = new Scanner(file);;
+		while(s.hasNextLine()){
 			String input = s.nextLine(); // Takes the input on one line as two numbers separated by a space
 			String[] numbers = input.split(" ");// Takes the input string and separates it based on spaces and stores them to an Array
-			int int1 = Integer.parseInt(numbers[0]); //Sets the value of each of the seed integers from the starting input string
-			int int2 = Integer.parseInt(numbers[1]);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			int1 = Integer.parseInt(numbers[0]); //Sets the value of each of the seed integers from the starting input string
+			int2 = Integer.parseInt(numbers[1]);
+			countCollatz(int1, int2);
+			System.out.println(int1 + " " + int2 + " " + count);
 		}
-}
+	}
 	
-
 	public void countCollatz(int a, int b) {
 
 		if (a < b) {
@@ -70,9 +67,7 @@ public class Collatz {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Collatz c = new Collatz();
-		c.countCollatz(c.int1, c.int2);
-		System.setIn(new FileInputStream(new File("/src/input.txt")));
-		
-		System.out.println(c.int1 + " " + c.int2 + " " + c.count);
+		System.setIn(new FileInputStream(new File("input")));
+		c.handleIO();		
 	}
 }

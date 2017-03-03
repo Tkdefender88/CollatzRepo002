@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Collatz {
+class Collatz {
 	int int1, int2, count;
 	
 	public void handleIO() throws FileNotFoundException {

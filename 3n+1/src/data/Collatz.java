@@ -1,36 +1,33 @@
 package data;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 class Collatz {
 	int int1, int2, count;
 	
-	public void handleIO() throws FileNotFoundException {
-		File file = new File("input");
-		Scanner s = new Scanner(file);;
-		while(s.hasNextLine()){
-			String input = s.nextLine(); // Takes the input on one line as two numbers separated by a space
-			String[] numbers = input.split(" ");// Takes the input string and separates it based on spaces and stores them to an Array
-			int1 = Integer.parseInt(numbers[0]); //Sets the value of each of the seed integers from the starting input string
+	@SuppressWarnings("unused")
+	public void handleIO() throws IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		while (true) {
+			String input = in.readLine();
+			String[] numbers = input.split(" ");
+			int1 = Integer.parseInt(numbers[0]);
 			int2 = Integer.parseInt(numbers[1]);
-			count = 0;
-			countCollatz(int1, int2);
-			System.out.println(int1 + " " + int2 + " " + count);
+			if(input == null){
+				break;
+			}			
 		}
-		s.close();
 	}
 	
 	public void countCollatz(int a, int b) {
-
 		if (a < b) {
 			for (int i = a; i <= b; i++) {
 				int count = 1;
 				int n = i;
-				//*****************
-				//main calculation
 				while (n != 1) {
 					if (n % 2 == 0) {
 						n = n / 2;
@@ -40,8 +37,6 @@ class Collatz {
 						count++;
 					}
 				}
-				//*********************
-				// storing highest count
 				if (count > this.count) {
 					this.count = count;
 				}
@@ -66,7 +61,7 @@ class Collatz {
 		}
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		Collatz c = new Collatz();
 		System.setIn(new FileInputStream(new File("input")));
 		c.handleIO();

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 class Collatz {
 	int int1, int2, count;
-	
+
 	@SuppressWarnings("unused")
 	public void handleIO() throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -19,10 +19,10 @@ class Collatz {
 			int2 = Integer.parseInt(numbers[1]);
 			if(input == null){
 				break;
-			}			
+			}
 		}
 	}
-	
+
 	public void countCollatz(int a, int b) {
 		if (a < b) {
 			for (int i = a; i <= b; i++) {

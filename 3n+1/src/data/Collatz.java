@@ -1,14 +1,33 @@
 package data;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 
 class Collatz {
 	int int1, int2, count;
-
+	
+	BufferedReader br;
+	BufferedWriter bw;
+	
+	public static void main(String[] args) throws IOException {
+		Collatz c = new Collatz();
+		System.setIn(new FileInputStream(new File("input")));
+		c.setupIO(new InputStreamReader(System.in), new OutputStreamWriter(System.out));
+	}
+	
+	public void setupIO(Reader reader, Writer writer) {
+		br = new BufferedReader(reader);
+		bw = new BufferedWriter(writer);
+		
+	}
+	/*
 	@SuppressWarnings("unused")
 	public void handleIO() throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -22,6 +41,7 @@ class Collatz {
 			}
 		}
 	}
+	*/
 
 	public void countCollatz(int a, int b) {
 		if (a < b) {
@@ -59,11 +79,5 @@ class Collatz {
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) throws IOException {
-		Collatz c = new Collatz();
-		System.setIn(new FileInputStream(new File("input")));
-		c.handleIO();
 	}
 }

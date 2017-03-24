@@ -5,15 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 class Collatz {
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	public int int1, int2;
 
 	public static void main(String[] args) throws IOException {
 		Collatz c = new Collatz();
 		c.run();
+		System.exit(0);
 	}
 	
 	public void run() throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String line;
 		while((line = br.readLine()) != null) {
 			handleInputOutput(line);
@@ -24,8 +25,6 @@ class Collatz {
 		String[] numbers = line.split("\\s+");
 		int1 = Integer.parseInt(numbers[0]);
 		int2 = Integer.parseInt(numbers[1]);
-		System.out.println("\n");
-		System.exit(0);
 		System.out.println(int1 + " " + int2 + " " + countCollatz(int1, int2));
 	}
 

@@ -13,10 +13,10 @@ class Collatz {
 		c.run();
 		System.exit(0);
 	}
-	
+
 	public void run() throws IOException {
 		String line;
-		while((line = br.readLine()) != null) {
+		while(!(line = br.readLine()).isEmpty()) {
 			handleInputOutput(line);
 		}
 	}

@@ -1,11 +1,12 @@
 package data;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
+
 
 class Collatz {
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	Scanner scan = new Scanner(System.in);
 	public int int1, int2;
 
 	public static void main(String[] args) throws IOException {
@@ -15,17 +16,19 @@ class Collatz {
 	}
 
 	public void run() throws IOException {
-		String line;
-		while(!(line = br.readLine()).isEmpty()) {
+		while(scan.hasNext()) {
+			String line = scan.next();
 			handleInputOutput(line);
-		}
+		}// end while
 	}
 
 	public void handleInputOutput(String line) {
-		String[] numbers = line.split("\\s+");
-		int1 = Integer.parseInt(numbers[0]);
-		int2 = Integer.parseInt(numbers[1]);
-		System.out.println(int1 + " " + int2 + " " + countCollatz(int1, int2));
+		int sum;
+		int1 = scan.nextInt();
+		int2 = scan.nextInt();
+		sum = countCollatz(int1, int2);
+		System.err.println(int1);
+		System.out.println(int1 + " " + int2 + " " + sum);
 	}
 
 	public int countCollatz(int a, int b) {
@@ -41,12 +44,12 @@ class Collatz {
 				} else {
 					n = (3 * n) + 1;
 					count++;
-				}
-			}
+				}//end if else
+			}// end while
 			if (count > maxCount) {
 				maxCount = count;
-			}
-		}
+			}//end if
+		}//end for
 		return maxCount;
 	}
 }

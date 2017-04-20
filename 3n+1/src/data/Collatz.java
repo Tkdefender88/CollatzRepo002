@@ -7,7 +7,6 @@ import java.util.Scanner;
 class Collatz {
 	//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	Scanner scan = new Scanner(System.in);
-	public int int1, int2;
 
 	public static void main(String[] args) throws IOException {
 		Collatz c = new Collatz();
@@ -16,19 +15,13 @@ class Collatz {
 	}
 
 	public void run() throws IOException {
+		int int1, int2, sum;
 		while(scan.hasNext()) {
-			String line = scan.next();
-			handleInputOutput(line);
+			int1 = scan.nextInt();
+			int2 = scan.nextInt();
+			sum = countCollatz(int1, int2);
+			System.out.println(int1 + " " + int2 + " " + sum);
 		}// end while
-	}
-
-	public void handleInputOutput(String line) {
-		int sum;
-		int1 = scan.nextInt();
-		int2 = scan.nextInt();
-		sum = countCollatz(int1, int2);
-		System.err.println(int1);
-		System.out.println(int1 + " " + int2 + " " + sum);
 	}
 
 	public int countCollatz(int a, int b) {
